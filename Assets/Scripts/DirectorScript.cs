@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Collections.Generic;
+using System.Xml;
 using Assets.Scripts.Models;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class DirectorScript : MonoBehaviour
     private Map _map;
 
     public Transform TileModel;
+    public Transform WallModel;
+    public Transform WallCapModel;
+
     public float TileSize = 2;
 
     // Use this for initialization
@@ -50,6 +54,36 @@ public class DirectorScript : MonoBehaviour
                 t.Transform.renderer.material.mainTexture = _map.Materials[int.Parse(currentNode.SelectSingleNode("Tile").InnerText)];
                 t.Transform.gameObject.SetActive(true);
                 _map.Tiles[x, y] = t;
+            }
+        }
+
+        _map.Walls = new List<Transform>();
+        var walls = level.SelectSingleNode("Walls");
+        foreach (XmlNode wall in walls.SelectNodes("Wall"))
+        {
+            var pos = wall.InnerText.Split(' ');
+            var start = new Vector3(float.Parse(pos[0].Split(',')[0]), 0, float.Parse(pos[0].Split(',')[1]));
+            var end = new Vector3(float.Parse(pos[1].Split(',')[0]), 0, float.Parse(pos[1].Split(',')[1]));
+            var newPos = start;
+
+            Debug.Log("s " + start);
+            Debug.Log("e " + end);
+
+            var needed = Vector3.Distance(start, end) + 1;
+
+            for (int i = 0; i < needed; i++)
+            {
+                Debug.Log("n " + newPos);
+
+                var w = Instantiate(WallModel) as Transform;
+                w.position = newPos * TileSize;
+                w.localScale *= TileSize;
+                w.Rotate(0, start.x == newPos.x ? 0 : 90, 0);
+                w.gameObject.SetActive(true);
+                _map.Walls.Add(w);
+
+                newPos = Vector3.MoveTowards(newPos, end, 1);
+
             }
         }
     }

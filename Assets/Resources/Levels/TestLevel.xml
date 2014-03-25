@@ -323,4 +323,8 @@
       <Tile>0</Tile>
     </Column>
   </Row>
+  <Walls>
+    <Wall>1,1 1,6</Wall>
+    <Wall>1,1 6,1</Wall>
+  </Walls>
 </Level>
