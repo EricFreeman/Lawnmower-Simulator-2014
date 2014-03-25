@@ -4,6 +4,6 @@ namespace Assets.Scripts.Models
 {
     public class Tile
     {
-        public GameObject GameObject;
+        public Transform Transform;
     }
 }

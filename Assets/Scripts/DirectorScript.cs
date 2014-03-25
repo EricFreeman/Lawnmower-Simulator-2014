@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Assets.Scripts.Models;
+﻿using Assets.Scripts.Models;
 using UnityEngine;
 
 public class DirectorScript : MonoBehaviour
 {
     private Map _map;
+    public Transform TileModel;
 
 	// Use this for initialization
 	void Start ()
@@ -29,9 +29,10 @@ public class DirectorScript : MonoBehaviour
         for (int x = 0; x < width; x++)
             for (int y = 0; y < height; y++)
             {
-                var t = new Tile {GameObject = GameObject.CreatePrimitive(PrimitiveType.Cube)};
-                t.GameObject.transform.position = new Vector3(x, 0, y);
-                t.GameObject.renderer.material = new Material("Diffuse");
+                var t = new Tile { Transform = Instantiate(TileModel) as Transform };
+                t.Transform.position = new Vector3(x, 0, y);
+                t.Transform.renderer.material.mainTexture = m.Materials[1];
+                t.Transform.gameObject.SetActive(true);
                 m.Tiles[x, y] = t;
             }
 
