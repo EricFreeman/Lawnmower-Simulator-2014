@@ -12,6 +12,7 @@ public class DirectorScript : MonoBehaviour
     public Transform WallCapModel;
 
     public float TileSize = 2;
+    public float TileXOffset = 1; //TODO: Update the model later so you don't do this in code!
 
     // Use this for initialization
     void Start()
@@ -49,7 +50,7 @@ public class DirectorScript : MonoBehaviour
             {
                 var currentNode = rows[y].SelectNodes("Column")[x];
                 var t = new Tile { Transform = Instantiate(TileModel) as Transform };
-                t.Transform.position = new Vector3(x * TileSize, 0, y * TileSize);
+                t.Transform.position = new Vector3((x + TileXOffset) * TileSize, 0, y * TileSize);
                 t.Transform.localScale *= TileSize;
                 t.Transform.renderer.material.mainTexture = _map.Materials[int.Parse(currentNode.SelectSingleNode("Tile").InnerText)];
                 t.Transform.gameObject.SetActive(true);
@@ -66,19 +67,15 @@ public class DirectorScript : MonoBehaviour
             var end = new Vector3(float.Parse(pos[1].Split(',')[0]), 0, float.Parse(pos[1].Split(',')[1]));
             var newPos = start;
 
-            Debug.Log("s " + start);
-            Debug.Log("e " + end);
-
-            var needed = Vector3.Distance(start, end) + 1;
+            var needed = Vector3.Distance(start, end);
+            var dir = start.x / end.x == 1;
 
             for (int i = 0; i < needed; i++)
             {
-                Debug.Log("n " + newPos);
-
                 var w = Instantiate(WallModel) as Transform;
                 w.position = newPos * TileSize;
                 w.localScale *= TileSize;
-                w.Rotate(0, start.x == newPos.x ? 0 : 90, 0);
+                w.Rotate(0, dir ? 0 : 90, 0);
                 w.gameObject.SetActive(true);
                 _map.Walls.Add(w);
 
