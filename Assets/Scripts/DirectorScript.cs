@@ -93,18 +93,37 @@ public class DirectorScript : MonoBehaviour
 
         _map.WallCaps = new List<Transform>();
         foreach (var wall in _map.Walls)
-        {
+        { //up right z-1
             if (Math.Abs(wall.rotation.eulerAngles.y - 90) < .1)
             {
-                if (_map.Walls.All(x => x.transform.position != wall.position - (Vector3.left*TileSize)))
+                if (_map.Walls.Where(x => x.rotation == wall.rotation).All(x => x.transform.position != wall.position + (Vector3.right*TileSize)))
                 {
                     var wc = Instantiate(WallCapModel) as Transform;
-                    wc.position = wall.position + new Vector3(TileSize, 0 ,0);
+                    wc.position = wall.position + new Vector3(TileSize, 0, 0);
                     wc.localScale *= TileSize;
                     wc.gameObject.SetActive(true);
                     _map.WallCaps.Add(wc);
                 }
-                if (_map.Walls.All(x => x.transform.position != wall.position + (Vector3.left * TileSize)))
+                if (_map.Walls.All(x => x.transform.position != wall.position + (Vector3.left*TileSize)))
+                {
+                    var wc = Instantiate(WallCapModel) as Transform;
+                    wc.position = wall.position;
+                    wc.localScale *= TileSize;
+                    wc.gameObject.SetActive(true);
+                    _map.WallCaps.Add(wc);
+                }
+            }
+            else
+            {
+                if (_map.Walls.Where(x => x.rotation == wall.rotation).All(x => x.transform.position != wall.position + (Vector3.forward * TileSize)))
+                {
+                    var wc = Instantiate(WallCapModel) as Transform;
+                    wc.position = wall.position + new Vector3(0, 0, TileSize);
+                    wc.localScale *= TileSize;
+                    wc.gameObject.SetActive(true);
+                    _map.WallCaps.Add(wc);
+                }
+                if (_map.Walls.All(x => x.transform.position != wall.position + (Vector3.back * TileSize)))
                 {
                     var wc = Instantiate(WallCapModel) as Transform;
                     wc.position = wall.position;
