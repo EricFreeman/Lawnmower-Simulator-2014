@@ -93,45 +93,31 @@ public class DirectorScript : MonoBehaviour
 
         _map.WallCaps = new List<Transform>();
         foreach (var wall in _map.Walls)
-        { //up right z-1
+        {
+            var check = _map.Walls.Where(x => x.rotation == wall.rotation).ToList();
             if (Math.Abs(wall.rotation.eulerAngles.y - 90) < .1)
             {
-                if (_map.Walls.Where(x => x.rotation == wall.rotation).All(x => x.transform.position != wall.position + (Vector3.right*TileSize)))
-                {
-                    var wc = Instantiate(WallCapModel) as Transform;
-                    wc.position = wall.position + new Vector3(TileSize, 0, 0);
-                    wc.localScale *= TileSize;
-                    wc.gameObject.SetActive(true);
-                    _map.WallCaps.Add(wc);
-                }
-                if (_map.Walls.All(x => x.transform.position != wall.position + (Vector3.left*TileSize)))
-                {
-                    var wc = Instantiate(WallCapModel) as Transform;
-                    wc.position = wall.position;
-                    wc.localScale *= TileSize;
-                    wc.gameObject.SetActive(true);
-                    _map.WallCaps.Add(wc);
-                }
+                if (check.All(x => x.transform.position != wall.position + (Vector3.right*TileSize)))
+                    AddCap(wall.position, new Vector3(TileSize, 0, 0));
+                if (check.All(x => x.transform.position != wall.position + (Vector3.left * TileSize)))
+                    AddCap(wall.position);
             }
             else
             {
-                if (_map.Walls.Where(x => x.rotation == wall.rotation).All(x => x.transform.position != wall.position + (Vector3.forward * TileSize)))
-                {
-                    var wc = Instantiate(WallCapModel) as Transform;
-                    wc.position = wall.position + new Vector3(0, 0, TileSize);
-                    wc.localScale *= TileSize;
-                    wc.gameObject.SetActive(true);
-                    _map.WallCaps.Add(wc);
-                }
-                if (_map.Walls.All(x => x.transform.position != wall.position + (Vector3.back * TileSize)))
-                {
-                    var wc = Instantiate(WallCapModel) as Transform;
-                    wc.position = wall.position;
-                    wc.localScale *= TileSize;
-                    wc.gameObject.SetActive(true);
-                    _map.WallCaps.Add(wc);
-                }
+                if (check.All(x => x.transform.position != wall.position + (Vector3.forward * TileSize)))
+                    AddCap(wall.position, new Vector3(0, 0, TileSize));
+                if (check.All(x => x.transform.position != wall.position + (Vector3.back * TileSize)))
+                    AddCap(wall.position);
             }
         }
+    }
+
+    private void AddCap(Vector3 position, Vector3 offset = default(Vector3))
+    {
+        var wc = Instantiate(WallCapModel) as Transform;
+        wc.position = position + offset;
+        wc.localScale *= TileSize;
+        wc.gameObject.SetActive(true);
+        _map.WallCaps.Add(wc);
     }
 }

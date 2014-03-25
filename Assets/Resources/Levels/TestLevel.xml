@@ -337,5 +337,7 @@
     <Wall>4,1 4,7</Wall>
     <Wall>7,4 7,7</Wall>
     <Wall>4,3 7,3</Wall>
+    <Wall>9,1 9,2</Wall>
+    <Wall>8,3 9,3</Wall>
   </Walls>
 </Level>
