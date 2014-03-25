@@ -44,9 +44,14 @@ public class DirectorScript : MonoBehaviour
         var c = rows[0].SelectNodes("Column");
 
         _map.Tiles = new Tile[c.Count, rows.Count];
-        
-        //FLOOR
-        
+
+        CreateFloor(rows);
+        CreateWalls(level);
+        CreateWallCaps();
+    }
+
+    private void CreateFloor(XmlNodeList rows)
+    {
         for (int y = 0; y < rows.Count; y++)
         {
             var columns = rows[y].SelectNodes("Column");
@@ -56,14 +61,16 @@ public class DirectorScript : MonoBehaviour
                 var t = new Tile { Transform = Instantiate(TileModel) as Transform };
                 t.Transform.position = new Vector3((x + TileXOffset) * TileSize, 0, y * TileSize);
                 t.Transform.localScale *= TileSize;
-                t.Transform.renderer.material.mainTexture = _map.Materials[int.Parse(currentNode.SelectSingleNode("Tile").InnerText)];
+                t.Transform.renderer.material.mainTexture =
+                    _map.Materials[int.Parse(currentNode.SelectSingleNode("Tile").InnerText)];
                 t.Transform.gameObject.SetActive(true);
                 _map.Tiles[x, y] = t;
             }
         }
+    }
 
-        //WALLS
-
+    private void CreateWalls(XmlNode level)
+    {
         _map.Walls = new List<Transform>();
         var walls = level.SelectSingleNode("Walls");
         foreach (XmlNode wall in walls.SelectNodes("Wall"))
@@ -74,12 +81,12 @@ public class DirectorScript : MonoBehaviour
             var newPos = start;
 
             var needed = Vector3.Distance(start, end);
-            var dir = start.x / end.x == 1;
+            var dir = start.x/end.x == 1;
 
             for (int i = 0; i < needed; i++)
             {
                 var w = Instantiate(WallModel) as Transform;
-                w.position = newPos * TileSize;
+                w.position = newPos*TileSize;
                 w.localScale *= TileSize;
                 w.Rotate(0, dir ? 0 : 90, 0);
                 w.gameObject.SetActive(true);
@@ -88,16 +95,17 @@ public class DirectorScript : MonoBehaviour
                 newPos = Vector3.MoveTowards(newPos, end, 1);
             }
         }
+    }
 
-        //WALL CAPS
-
+    private void CreateWallCaps()
+    {
         _map.WallCaps = new List<Transform>();
         foreach (var wall in _map.Walls)
         {
             var check = _map.Walls.Where(x => x.rotation == wall.rotation).ToList();
             if (Math.Abs(wall.rotation.eulerAngles.y - 90) < .1)
             {
-                if (check.All(x => x.transform.position != wall.position + (Vector3.right*TileSize)))
+                if (check.All(x => x.transform.position != wall.position + (Vector3.right * TileSize)))
                     AddCap(wall.position, new Vector3(TileSize, 0, 0));
                 if (check.All(x => x.transform.position != wall.position + (Vector3.left * TileSize)))
                     AddCap(wall.position);
