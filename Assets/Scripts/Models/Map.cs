@@ -8,7 +8,9 @@ namespace Assets.Scripts.Models
     {
         public Tile[,] Tiles;
         public List<Transform> Walls;
-        public List<Transform> WallCaps; 
+        public List<Transform> WallCaps;
+        public List<Transform> Doors; 
+
         public List<Texture> Materials;
 
         public Map()

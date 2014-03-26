@@ -12,6 +12,7 @@ public class DirectorScript : MonoBehaviour
     public Transform TileModel;
     public Transform WallModel;
     public Transform WallCapModel;
+    public Transform DoorModel;
 
     public float TileSize = 2;
     public float TileXOffset = 1; //TODO: Update the model later so you don't do this in code!
@@ -48,6 +49,7 @@ public class DirectorScript : MonoBehaviour
         CreateFloor(rows);
         CreateWalls(level);
         CreateWallCaps();
+        CreateDoors(level);
     }
 
     private void CreateFloor(XmlNodeList rows)
@@ -127,5 +129,32 @@ public class DirectorScript : MonoBehaviour
         wc.localScale *= TileSize;
         wc.gameObject.SetActive(true);
         _map.WallCaps.Add(wc);
+    }
+
+    private void CreateDoors(XmlNode level)
+    {
+        _map.Doors = new List<Transform>();
+        var doors = level.SelectSingleNode("Doors");
+        foreach (XmlNode door in doors.SelectNodes("Door"))
+        {
+            var configs = door.InnerText.Split(',');
+
+            var d = Instantiate(DoorModel) as Transform;
+            d.Translate((new Vector3(float.Parse(configs[0]), 1, float.Parse(configs[1])) * TileSize) + 
+                        (Vector3.right * TileXOffset));
+            d.localScale *= TileSize;
+            d.Rotate(0, float.Parse(configs[2]), 0);
+            SetActive(d.gameObject, false);
+            SetActive(d.gameObject, true);
+            _map.Doors.Add(d);
+        }
+    }
+
+    void SetActive(GameObject go, bool activate)
+    {
+        foreach (Transform t in go.GetComponentsInChildren<Transform>(true))
+        {
+            t.gameObject.active = activate;
+        }
     }
 }

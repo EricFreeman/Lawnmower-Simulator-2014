@@ -344,4 +344,7 @@
     <Wall>9,1 9,2</Wall>
     <Wall>8,3 9,3</Wall>
   </Walls>
+  <Doors>
+    <Door>2,1,0</Door>
+  </Doors>
 </Level>
