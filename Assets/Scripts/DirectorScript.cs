@@ -14,7 +14,6 @@ public class DirectorScript : MonoBehaviour
     public Transform WallCapModel;
     public Transform DoorModel;
 
-    public float TileSize = 2;
     public float TileXOffset = 1; //TODO: Update the model later so you don't do this in code!
 
     // Use this for initialization
@@ -61,8 +60,7 @@ public class DirectorScript : MonoBehaviour
             {
                 var currentNode = rows[y].SelectNodes("Column")[x];
                 var t = new Tile { Transform = Instantiate(TileModel) as Transform };
-                t.Transform.position = new Vector3((x + TileXOffset) * TileSize, 0, y * TileSize);
-                t.Transform.localScale *= TileSize;
+                t.Transform.position = new Vector3((x + TileXOffset), 0, y);
                 t.Transform.renderer.material.mainTexture =
                     _map.Materials[int.Parse(currentNode.SelectSingleNode("Tile").InnerText)];
                 t.Transform.gameObject.SetActive(true);
@@ -88,8 +86,7 @@ public class DirectorScript : MonoBehaviour
             for (int i = 0; i < needed; i++)
             {
                 var w = Instantiate(WallModel) as Transform;
-                w.position = newPos*TileSize;
-                w.localScale *= TileSize;
+                w.position = newPos;
                 w.Rotate(0, dir ? 0 : 90, 0);
                 w.gameObject.SetActive(true);
                 _map.Walls.Add(w);
@@ -107,16 +104,16 @@ public class DirectorScript : MonoBehaviour
             var check = _map.Walls.Where(x => x.rotation == wall.rotation).ToList();
             if (Math.Abs(wall.rotation.eulerAngles.y - 90) < .1)
             {
-                if (check.All(x => x.transform.position != wall.position + (Vector3.right * TileSize)))
-                    AddCap(wall.position, new Vector3(TileSize, 0, 0));
-                if (check.All(x => x.transform.position != wall.position + (Vector3.left * TileSize)))
+                if (check.All(x => x.transform.position != wall.position + Vector3.right))
+                    AddCap(wall.position, Vector3.right);
+                if (check.All(x => x.transform.position != wall.position + Vector3.left))
                     AddCap(wall.position);
             }
             else
             {
-                if (check.All(x => x.transform.position != wall.position + (Vector3.forward * TileSize)))
-                    AddCap(wall.position, new Vector3(0, 0, TileSize));
-                if (check.All(x => x.transform.position != wall.position + (Vector3.back * TileSize)))
+                if (check.All(x => x.transform.position != wall.position + Vector3.forward))
+                    AddCap(wall.position, Vector3.forward);
+                if (check.All(x => x.transform.position != wall.position + Vector3.back))
                     AddCap(wall.position);
             }
         }
@@ -124,9 +121,10 @@ public class DirectorScript : MonoBehaviour
 
     private void AddCap(Vector3 position, Vector3 offset = default(Vector3))
     {
+        if (_map.WallCaps.Any(x => x.position == position)) return;
+
         var wc = Instantiate(WallCapModel) as Transform;
         wc.position = position + offset;
-        wc.localScale *= TileSize;
         wc.gameObject.SetActive(true);
         _map.WallCaps.Add(wc);
     }
@@ -140,9 +138,8 @@ public class DirectorScript : MonoBehaviour
             var configs = door.InnerText.Split(',');
 
             var d = Instantiate(DoorModel) as Transform;
-            d.Translate((new Vector3(float.Parse(configs[0]), 1, float.Parse(configs[1])) * TileSize) + 
+            d.Translate(new Vector3(float.Parse(configs[0]), 1, float.Parse(configs[1])) + 
                         (Vector3.right * TileXOffset));
-            d.localScale *= TileSize;
             d.Rotate(0, float.Parse(configs[2]), 0);
             SetActive(d.gameObject, false);
             SetActive(d.gameObject, true);
