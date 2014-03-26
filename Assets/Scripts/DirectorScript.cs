@@ -121,7 +121,7 @@ public class DirectorScript : MonoBehaviour
 
     private void AddCap(Vector3 position, Vector3 offset = default(Vector3))
     {
-        if (_map.WallCaps.Any(x => x.position == position)) return;
+        if (_map.WallCaps.Any(x => x.position == position + offset)) return;
 
         var wc = Instantiate(WallCapModel) as Transform;
         wc.position = position + offset;
@@ -138,8 +138,8 @@ public class DirectorScript : MonoBehaviour
             var configs = door.InnerText.Split(',');
 
             var d = Instantiate(DoorModel) as Transform;
-            d.Translate(new Vector3(float.Parse(configs[0]), 1, float.Parse(configs[1])) + 
-                        (Vector3.right * TileXOffset));
+            d.Translate(new Vector3(float.Parse(configs[0]), .5f, float.Parse(configs[1])) + 
+                        (Vector3.right * TileXOffset / 2));
             d.Rotate(0, float.Parse(configs[2]), 0);
             SetActive(d.gameObject, false);
             SetActive(d.gameObject, true);
@@ -151,7 +151,7 @@ public class DirectorScript : MonoBehaviour
     {
         foreach (Transform t in go.GetComponentsInChildren<Transform>(true))
         {
-            t.gameObject.active = activate;
+            t.gameObject.SetActive(activate);
         }
     }
 }
