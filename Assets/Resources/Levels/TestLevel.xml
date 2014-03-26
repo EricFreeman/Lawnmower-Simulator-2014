@@ -1,48 +1,48 @@
 ﻿<Level>
   <Row>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Row>
     <Column>
+      <Tile>1</Tile>
+    </Column>
+    <Column>
       <Tile>0</Tile>
     </Column>
     <Column>
-      <Tile>1</Tile>
+      <Tile>0</Tile>
     </Column>
     <Column>
-      <Tile>1</Tile>
-    </Column>
-    <Column>
-      <Tile>1</Tile>
+      <Tile>0</Tile>
     </Column>
     <Column>
       <Tile>2</Tile>
@@ -54,27 +54,27 @@
       <Tile>2</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Row>
     <Column>
+      <Tile>1</Tile>
+    </Column>
+    <Column>
       <Tile>0</Tile>
     </Column>
     <Column>
-      <Tile>1</Tile>
+      <Tile>0</Tile>
     </Column>
     <Column>
-      <Tile>1</Tile>
-    </Column>
-    <Column>
-      <Tile>1</Tile>
+      <Tile>0</Tile>
     </Column>
     <Column>
       <Tile>2</Tile>
@@ -86,27 +86,27 @@
       <Tile>2</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Row>
     <Column>
+      <Tile>1</Tile>
+    </Column>
+    <Column>
       <Tile>0</Tile>
     </Column>
     <Column>
-      <Tile>1</Tile>
+      <Tile>0</Tile>
     </Column>
     <Column>
-      <Tile>1</Tile>
-    </Column>
-    <Column>
-      <Tile>1</Tile>
+      <Tile>0</Tile>
     </Column>
     <Column>
       <Tile>3</Tile>
@@ -118,18 +118,18 @@
       <Tile>3</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Row>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
       <Tile>4</Tile>
@@ -151,18 +151,18 @@
       <Tile>3</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Row>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
       <Tile>4</Tile>
@@ -184,62 +184,62 @@
       <Tile>3</Tile>
     </Column>
     <Column>
-      <Tile>1</Tile>
-    </Column>
-    <Column>
-      <Tile>1</Tile>
+      <Tile>0</Tile>
     </Column>
     <Column>
       <Tile>0</Tile>
+    </Column>
+    <Column>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Row>
     <Column>
-      <Tile>0</Tile>
-    </Column>
-    <Column>
-      <Tile>4</Tile>
-    </Column>
-    <Column>
-      <Tile>4</Tile>
-    </Column>
-    <Column>
-      <Tile>4</Tile>
-    </Column>
-    <Column>
-      <Tile>3</Tile>
-    </Column>
-    <Column>
-      <Tile>3</Tile>
-    </Column>
-    <Column>
-      <Tile>3</Tile>
-    </Column>
-    <Column>
       <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>1</Tile>
+      <Tile>4</Tile>
+    </Column>
+    <Column>
+      <Tile>4</Tile>
+    </Column>
+    <Column>
+      <Tile>4</Tile>
+    </Column>
+    <Column>
+      <Tile>3</Tile>
+    </Column>
+    <Column>
+      <Tile>3</Tile>
+    </Column>
+    <Column>
+      <Tile>3</Tile>
     </Column>
     <Column>
       <Tile>0</Tile>
+    </Column>
+    <Column>
+      <Tile>0</Tile>
+    </Column>
+    <Column>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Row>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
       <Tile>2</Tile>
@@ -256,27 +256,24 @@
       <Door>0,1</Door>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Row>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
-    </Column>
-    <Column>
-      <Tile>2</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
       <Tile>2</Tile>
@@ -288,55 +285,62 @@
       <Tile>2</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>2</Tile>
+    </Column>
+    <Column>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Row>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
     <Column>
-      <Tile>0</Tile>
+      <Tile>1</Tile>
     </Column>
   </Row>
   <Walls>
     <Wall>1,1 1,7</Wall>
-    <Wall>1,1 7,1</Wall>
-    <Wall>1,7 5,7</Wall>
+    <Wall>1,1 2,1</Wall>
+    <Wall>3,1 7,1</Wall>
+    <Wall>1,7 6,7</Wall>
+    <Wall>7,7 9,7</Wall>
     <Wall>7,1 7,5</Wall>
     <Wall>5,7 5,9</Wall>
-    <Wall>5,7 9,7</Wall>
     <Wall>5,9 9,9</Wall>
     <Wall>9,5 9,9</Wall>
     <Wall>7,5 9,5</Wall>
-    <Wall>1,4 4,4</Wall>
-    <Wall>4,1 4,7</Wall>
-    <Wall>7,4 7,7</Wall>
-    <Wall>4,3 7,3</Wall>
+    <Wall>1,4 2,4</Wall>
+    <Wall>3,4 4,4</Wall>
+    <Wall>4,1 4,2</Wall>
+    <Wall>4,3 4,7</Wall>
+    <Wall>7,6 7,7</Wall>
+    <Wall>4,3 5,3</Wall>
+    <Wall>6,3 7,3</Wall>
     <Wall>9,1 9,2</Wall>
     <Wall>8,3 9,3</Wall>
   </Walls>

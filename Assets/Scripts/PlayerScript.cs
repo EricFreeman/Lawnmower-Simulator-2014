@@ -11,8 +11,9 @@ public class PlayerScript : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Input.GetAxisRaw("Horizontal") * PlayerMoveSpeed, 
-                            0, 
-                            Input.GetAxisRaw("Vertical") * PlayerMoveSpeed);	
+        rigidbody.MovePosition(rigidbody.position + new Vector3(
+            Input.GetAxisRaw("Horizontal") * PlayerMoveSpeed, 
+            0, 
+            Input.GetAxisRaw("Vertical") * PlayerMoveSpeed) * Time.deltaTime);	
 	}
 }
