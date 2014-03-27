@@ -346,5 +346,11 @@
   </Walls>
   <Doors>
     <Door>2,1,0</Door>
+    <Door>2,4,0</Door>
+    <Door>5,3,0</Door>
+    <Door>6,7,0</Door>
+
+    <Door>4,2,90</Door>
+    <Door>7,5,90</Door>
   </Doors>
 </Level>

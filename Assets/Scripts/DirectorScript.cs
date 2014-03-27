@@ -141,6 +141,10 @@ public class DirectorScript : MonoBehaviour
             d.Translate(new Vector3(float.Parse(configs[0]), .5f, float.Parse(configs[1])) + 
                         (Vector3.right * TileXOffset / 2));
             d.Rotate(0, float.Parse(configs[2]), 0);
+
+            if (Math.Abs(d.rotation.eulerAngles.y - 90) < .1)
+                d.Translate(-.5f, 0, -.5f);
+
             SetActive(d.gameObject, false);
             SetActive(d.gameObject, true);
             _map.Doors.Add(d);
