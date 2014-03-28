@@ -324,33 +324,26 @@
     </Column>
   </Row>
   <Walls>
-    <Wall>1,1 1,7</Wall>
-    <Wall>1,1 2,1</Wall>
-    <Wall>3,1 7,1</Wall>
-    <Wall>1,7 6,7</Wall>
-    <Wall>7,7 9,7</Wall>
-    <Wall>7,1 7,5</Wall>
-    <Wall>5,7 5,9</Wall>
-    <Wall>5,9 9,9</Wall>
-    <Wall>9,5 9,9</Wall>
-    <Wall>7,5 9,5</Wall>
-    <Wall>1,4 2,4</Wall>
-    <Wall>3,4 4,4</Wall>
-    <Wall>4,1 4,2</Wall>
-    <Wall>4,3 4,7</Wall>
-    <Wall>7,6 7,7</Wall>
-    <Wall>4,3 5,3</Wall>
-    <Wall>6,3 7,3</Wall>
-    <Wall>9,1 9,2</Wall>
-    <Wall>8,3 9,3</Wall>
+    <Wall>1,10 6,10</Wall>
+    <Wall>4,8 6,8</Wall>
+    <Wall>1,7 3,7</Wall>
+    <Wall>7,6 8,6</Wall>
+    <Wall>1,4 8,4</Wall>
+    <Wall>5,2 8,2</Wall>
+
+    <Wall>1,9 1,4</Wall>
+    <Wall>4,4 4,9</Wall>
+    <Wall>7,4 7,9</Wall>
+    <Wall>5,2 5,3</Wall>
+    <Wall>9,2 9,5</Wall>
   </Walls>
   <Doors>
-    <Door>2,1,0</Door>
+    <Door>2,7,0</Door>
     <Door>2,4,0</Door>
-    <Door>5,3,0</Door>
-    <Door>6,7,0</Door>
-
-    <Door>4,2,90</Door>
-    <Door>7,5,90</Door>
+    <Door>6,4,0</Door>
+    <Door>5,8,0</Door>
+    <Door>7,4,0</Door>
+    
+    <Door>4,5,90</Door>
   </Doors>
 </Level>
