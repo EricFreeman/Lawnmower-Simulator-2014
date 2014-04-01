@@ -70,7 +70,7 @@ namespace Assets.Scripts.Models
                 {
                     var currentNode = rows[y].SelectNodes("Column")[x];
                     var t = new Tile { Transform = (Instantiate(TileModel) as GameObject).transform };
-                    t.Transform.position = new Vector3((x + TileXOffset), 0, rows.Count - y);
+                    t.Transform.position = new Vector3((x + TileXOffset), 0, y);
                     t.Transform.renderer.material.mainTexture =
                         Materials[int.Parse(currentNode.SelectSingleNode("Tile").InnerText)];
                     t.Transform.gameObject.SetActive(true);
@@ -90,7 +90,7 @@ namespace Assets.Scripts.Models
                 var end = new Vector3(float.Parse(pos[1].Split(',')[0]), 0, float.Parse(pos[1].Split(',')[1]));
                 var newPos = start;
 
-                var needed = Vector3.Distance(start, end) + 1;
+                var needed = Vector3.Distance(start, end);
                 var dir = start.x / end.x == 1;
 
                 for (int i = 0; i < needed; i++)

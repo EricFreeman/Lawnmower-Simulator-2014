@@ -1,5 +1,4 @@
-﻿using System.Xml;
-using Assets.Scripts.Models;
+﻿using Assets.Scripts.Models;
 using UnityEngine;
 
 public class DirectorScript : MonoBehaviour
