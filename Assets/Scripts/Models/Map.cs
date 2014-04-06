@@ -187,8 +187,14 @@ namespace Assets.Scripts.Models
 
                 var sr = i.GetComponent<SpriteRenderer>();
                 sr.sprite = ItemList.FirstOrDefault(x => x.name == item.InnerText);
-                i.transform.Translate(new Vector3(sX, .5f, sY));
+                i.transform.Translate(new Vector3(sX, .25f, sY));
                 i.transform.Rotate(new Vector3(90, sRot, 0));
+
+                var bc = i.GetComponent<BoxCollider>();
+                bc.size = new Vector3(sr.sprite.bounds.size.x, sr.sprite.bounds.size.y, sr.sprite.bounds.size.z);
+
+                var shadow = i.GetChild(0);
+                shadow.transform.localScale = new Vector3(sr.sprite.bounds.size.x, sr.sprite.bounds.size.y, sr.sprite.bounds.size.z);
 
                 Items.Add(i);
             }
