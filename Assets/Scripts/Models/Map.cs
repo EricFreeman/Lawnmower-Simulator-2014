@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Assets.Scripts.Models
 {
@@ -13,14 +11,17 @@ namespace Assets.Scripts.Models
         public Tile[,] Tiles;
         public List<Transform> Walls;
         public List<Transform> WallCaps;
-        public List<Transform> Doors; 
+        public List<Transform> Doors;
+        public List<Transform> Items;
 
         public List<Texture> Materials;
+        public List<Sprite> ItemList; 
 
         public GameObject TileModel;
         public GameObject WallModel;
         public GameObject WallCapModel;
         public GameObject DoorModel;
+        public GameObject ItemModel;
 
         public float TileXOffset = 1; //TODO: Update the model later so you don't do this in code!
 
@@ -28,18 +29,20 @@ namespace Assets.Scripts.Models
 
         void Start()
         {
-            LoadMaterials();
+            LoadFromFolder();
             TileModel = Resources.Load<GameObject>("Tiles/Tile");
             WallModel = Resources.Load<GameObject>("Models/Wall");
             WallCapModel = Resources.Load<GameObject>("Models/WallCap");
             DoorModel = Resources.Load<GameObject>("Models/Door");
+            ItemModel = Resources.Load<GameObject>("Items/Item");
 
             LoadLevel();
         }
 
-        private void LoadMaterials()
+        private void LoadFromFolder()
         {
             Materials = Resources.LoadAll<Texture>("Tiles").ToList();
+            ItemList = Resources.LoadAll<Sprite>("Items").ToList();
         }
 
         #region Level Loading
@@ -58,6 +61,7 @@ namespace Assets.Scripts.Models
             CreateFloor(rows);
             CreateWalls(level);
             CreateDoors(level);
+            CreateItems(level);
             CreateWallCaps();
         }
 
@@ -167,6 +171,26 @@ namespace Assets.Scripts.Models
                 SetActive(d.gameObject, false);
                 SetActive(d.gameObject, true);
                 Doors.Add(d);
+            }
+        }
+
+        private void CreateItems(XmlNode level)
+        {
+            Items = new List<Transform>();
+            var items = level.SelectSingleNode("Items");
+            foreach (XmlNode item in items.SelectNodes("Item"))
+            {
+                var i = (Instantiate(ItemModel) as GameObject).transform;
+                var sX = float.Parse(item.Attributes["X"].InnerText);
+                var sY = float.Parse(item.Attributes["Y"].InnerText);
+                var sRot = float.Parse(item.Attributes["Rot"].InnerText);
+
+                var sr = i.GetComponent<SpriteRenderer>();
+                sr.sprite = ItemList.FirstOrDefault(x => x.name == item.InnerText);
+                i.transform.Translate(new Vector3(sX, .5f, sY));
+                i.transform.Rotate(new Vector3(90, sRot, 0));
+
+                Items.Add(i);
             }
         }
 
