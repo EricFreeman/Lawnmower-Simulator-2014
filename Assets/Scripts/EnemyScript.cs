@@ -6,6 +6,7 @@ public class EnemyScript : MonoBehaviour
     public float FieldOfView = 60f;
     public float ViewDistance = 5.5f;
     public float MoveSpeed = 2f;
+    public float TurnSpeed = 6f;
 
     private bool canSeePlayer;
 
@@ -55,6 +56,9 @@ public class EnemyScript : MonoBehaviour
         {            
             LastKnownLocation = Player.transform.position;
             transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, MoveSpeed * Time.deltaTime);
+
+            var targetRotation = Quaternion.LookRotation(Player.transform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, TurnSpeed * Time.deltaTime);
         }
     }
 }
